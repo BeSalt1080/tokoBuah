@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "css": "bun tailwindcss -i ./public/css/input.css -o ./public/css/style.css --watch -m"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
