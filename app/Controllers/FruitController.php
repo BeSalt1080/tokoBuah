@@ -43,7 +43,6 @@ class FruitController extends BaseController
     }
     public function update($id)
     {
-        $fruit = model('Fruit');
         $validation = $this->validate([
             'name'=>'required',
             'price'=>'required|is_numeric',
@@ -52,15 +51,16 @@ class FruitController extends BaseController
         if(!$validation) dd($this->validator->getErrors());
         $validData = $this->validator->getValidated();
         $image = $this->request->getFile('image');
-        if($image)
+        $fruit = model('Fruit');
+        if($image->getSize() != 0)
         {
             if($image->guessExtension())
             $imageName = $image->getRandomName();
             $imageURL = 'image/'.$imageName;
             if(!$image->move(FCPATH.'image/',$imageName)) dd(':(');
             $validData['image'] = $imageURL;
+            unlink(FCPATH.$fruit->find($id)['image']);
         }
-        $fruit = model('Fruit');
         $fruit->update($id,$validData);
         return redirect()->route('index');
     }
