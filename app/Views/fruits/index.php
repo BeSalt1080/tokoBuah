@@ -1,14 +1,15 @@
-<div class="grid grid-cols-4 gap-8 p-8">
+<div class="grid grid-cols-5 gap-6 p-6">
     <?php foreach ($data as $d) : ?>
         <div class="border shadow-md rounded-xl pb-0">
-            <div class="p-10 pb-5">
-                <div class="w-full h-80 overflow-hidden">
-                    <img class="rounded-md " src="/<?= $d['image'] ?>" alt="<?= $d['image'] ?>">
+            <div class="p-5 pb-5">
+                <div class="w-full h-60 overflow-hidden flex justify-center">
+                    <img class="rounded-md h-60" src="/<?= $d['image'] ?>" alt="<?= $d['image'] ?>">
                 </div>
 
                 <div class="p-3">
                     <div class="text-3xl"><?= $d['name'] ?></div>
                     <div class="text-xl">Rp <?= number_format($d['price'], 2, ',', '.') ?></div>
+                    <div class="text-lg"><?= $d['description'] ?></div>
                 </div>
             </div>
             <div class="flex">
